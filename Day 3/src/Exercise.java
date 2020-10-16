@@ -1,39 +1,42 @@
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 public class Exercise {
 
-	private static ArrayList<Integer> myList = new ArrayList<Integer>();
+	private ArrayList<Integer> myList = new ArrayList<Integer>();	
 	
-	public static ArrayList<Integer> generatePrimes(int n) {
+	public ArrayList<Integer> generatePrimes(int n) {
 		
 		for (int i = 2; i <= n; i++) {
-			myList.add(i);
-		}
-		
+			if (isPrime(i)) {
+				myList.add(i);
+			}			
+		}		
 		return myList;
-	}
+	}	
 	
-	public boolean isPrime(int n) {
-		boolean bPrime;
+	public  boolean isPrime(int n) {
+		boolean bPrime = true;
 		
-		if (n != 0 || n!=1) {
-			for (int i = 0; i < n; i++) {
-				
+		if (n != 0 && n!=1) {
+			for (int i = 2; i < n; i++) {				
+				if (n%i == 0){					
+					bPrime = false;
+					break;
+				}				
 			}
-		}else {
-			
-		}
-		
-		
-		return true;
-	}
-	
-	
+		}		
+		return bPrime;
+	}	
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		Exercise test = new Exercise();
 		System.out.println(
-				generatePrimes(100)
+				test.generatePrimes(
+						Integer.parseInt(
+								JOptionPane.showInputDialog("Up to what number you want to generate prime numbers?"))
+						)
 				);
 	}
 
