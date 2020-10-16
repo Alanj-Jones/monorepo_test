@@ -24,6 +24,8 @@ public class Exercise2 {
 		
 		public Node root;
 		public Count ct = new Count() ;
+		boolean left;
+		boolean right;
 		
 		public boolean countSingleRec(Node node, Count c) {
 			boolean answer = false;
@@ -32,7 +34,7 @@ public class Exercise2 {
 				answer = true;
 			}
 			
-			boolean left = countSingleRec(node.left, c);
+			this.left = countSingleRec(node.left, c);
 			boolean right = countSingleRec(node.right, c);
 			
 			if (!left || !right) {
