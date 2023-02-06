@@ -16,7 +16,7 @@ class TasksService {
   }
 
   deleteTask = (id) => {
-    return Task.deleteOne({_id: id}).exec();
+    return Task.findByIdAndDelete({_id: id}).exec();
   }
 
   updateTask = (id, updatedTask) => {
